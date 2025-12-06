@@ -124,8 +124,7 @@ namespace Classes.Customers
                 /* customers - log - headers */
                 string header = "CustomerId,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax";
 
-                lstCustomersLog.Add(header);
-                
+                lstCustomersLog.Add(header);                
 
                 /* customers - log */
                 foreach (var customer in customers.Results)
@@ -184,14 +183,14 @@ namespace Classes.Customers
 
             /* connection - open */
             objADONet.connectionSQLServer = objADONet.connectionOpen(objADONet.connectionSQLServer, 2);            
-            SqlCommand commandSQL = new SqlCommand("select CustomerID, CompanyName, ContactName, ContactTitle, Country from Customers", objADONet.connectionSQLServer);
+            SqlCommand commandSQL = new SqlCommand("select CustomerID, CompanyName, ContactName, ContactTitle, Country from Customers LIMIT " + _settings.maxRows, objADONet.connectionSQLServer);
             SqlDataReader commandSQLReader = commandSQL.ExecuteReader();
             List<Customer> customersList = new List<Customer>();
 
             int icustomers = 0;
             if (commandSQLReader.HasRows)
             {
-                while (commandSQLReader.Read() && icustomers < _settings.maxRows)
+                while (commandSQLReader.Read()) // && icustomers < _settings.maxRows)
                 {                    
                     var Customer = new Customer
                     {

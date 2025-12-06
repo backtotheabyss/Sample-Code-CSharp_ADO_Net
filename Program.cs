@@ -120,10 +120,6 @@ namespace CSharp_Net8_RESTful_Query
                             }
                             break;
 
-                        case "searchfield":
-                            settings.searchField = value;
-                            break;
-
                         case "searchvalue":
                             settings.searchValue = value;
                             break;
@@ -158,19 +154,7 @@ namespace CSharp_Net8_RESTful_Query
                     case "customersDump": { iRet = customersObj.customersDump(ref tErrorMessage, 1); break; }
                     case "customersByCountry": { iRet = customersObj.customersDump(ref tErrorMessage, 2); break; }
                     case "customersByCompanyName": { iRet = customersObj.customersDump(ref tErrorMessage, 3); break; }
-                }                
-
-                //switch (settings.command)
-                //{
-                //    case "customers":
-                //        {
-                //            /* customers - retrieve */
-                //            Customers customersObj = host.Services.GetRequiredService<Customers>();
-                //            iRet = customersObj.customersDump(ref tErrorMessage, settings.command);
-
-                //            break;
-                //        }
-                //}
+                }   
             }
             else
                 CommandLineUsage();

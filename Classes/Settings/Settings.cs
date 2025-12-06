@@ -15,7 +15,7 @@ namespace C_Sharp_ADONet
         public string command { get; set; } = string.Empty;
         public int maxRows { get; set; } = 0;
         public string sorting { get; set; } = string.Empty;
-        public string searchField { get; set; } = string.Empty;
+        // public string searchField { get; set; } = string.Empty;
         public string searchValue { get; set; } = string.Empty;
         public bool writeLog { get; set; } = true;
 
@@ -30,7 +30,7 @@ namespace C_Sharp_ADONet
             command = _configuration["command"] ?? string.Empty;
             maxRows = int.Parse(_configuration["maxRows"] ?? "0");
             sorting = _configuration["sorting"] ?? string.Empty;
-            searchField = _configuration["searchField"] ?? string.Empty;
+            // searchField = _configuration["searchField"] ?? string.Empty;
             searchValue = _configuration["searchValue"] ?? string.Empty;
             /* end settings */
 
