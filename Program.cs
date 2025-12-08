@@ -31,10 +31,10 @@ namespace CSharp_Net8_RESTful_Query
             Console.BufferHeight = CONSOLEMAXLINES;
 
             /* dev */
-            // args = new[] { "--customersByCountry", "--maxrows:500", "--sorting:ASC", "--searchfield:Country", "--searchvalue:USA"};
+            // args = new[] { "--customersByCompanyName", "--maxrows:500", "--sorting:ASC", "--searchvalue:Market"};
             // args = new[] { "--customersDump", "--sorting:ASC", "--maxrows:500" };
-            // args = new[] { "--customersByCountry", "--maxrows:50", "--searchfield:Country", "--searchvalue:United States", "--sorting:DESC" };
-            // args = new[] { "--customersByCompanyName", "--maxrows:1000", "--searchfield:CompanyName", "--searchvalue:Market" };
+            // args = new[] { "--customersByCountry", "--maxrows:50", "--searchvalue:United States", "--sorting:DESC" };
+            // args = new[] { "--customersByCompanyName", "--maxrows:1000", "--searchvalue:Market" };
             // args = new[] { "--customersByCompanyName" };
 
             var host = Host.CreateDefaultBuilder(args)
