@@ -183,7 +183,7 @@ namespace Classes.Customers
 
             /* connection - open */
             objADONet.connectionSQLServer = objADONet.connectionOpen(objADONet.connectionSQLServer, 2);            
-            SqlCommand commandSQL = new SqlCommand("select CustomerID, CompanyName, ContactName, ContactTitle, Country from Customers LIMIT " + _settings.maxRows, objADONet.connectionSQLServer);
+            SqlCommand commandSQL = new SqlCommand("select TOP " + _settings.maxRows + " CustomerID, CompanyName, ContactName, ContactTitle, Country from Customers", objADONet.connectionSQLServer);
             SqlDataReader commandSQLReader = commandSQL.ExecuteReader();
             List<Customer> customersList = new List<Customer>();
 
