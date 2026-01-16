@@ -158,7 +158,11 @@ namespace Classes.Customers
                     /* dev */
                     //string appDataFolder = Path.Combine(
                     //    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                    //    "C#_ADO_Net",
+- Program.cs:                     //    "Diego Sendra",
+                    //    "code",
+                    //    "C#",
+                    //    "ALTOUR",
+                    //    "C#_ADO.Net",
                     //    "Logs"
                     //);
 
