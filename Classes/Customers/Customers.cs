@@ -57,15 +57,13 @@ namespace Classes.Customers
                                         string.Equals(c.Country, _settings.searchValue, StringComparison.OrdinalIgnoreCase))                                
                             .ToList();
 
-                            Console.WriteLine(filtered[0].Country);
-                            Console.WriteLine("-------------");
-
                             if (filtered.Count > 0)
                             {
-                                Console.WriteLine(filtered[0].CompanyName);
+                                Console.WriteLine(_settings.searchValue);
                                 Console.WriteLine("-------------");
                             }
 
+                            customers.Results = filtered;
 
                             break;
                         }
@@ -100,7 +98,7 @@ namespace Classes.Customers
                             {
                                 switch (command)
                                 {
-                                    case 2: case 3: { customers.Results = customers.Results.OrderBy(c => c.Country).ToList(); break; }
+                                    case 2: { customers.Results = customers.Results.OrderBy(c => c.Country).ToList(); break; }                                    
                                     default: { customers.Results = customers.Results.OrderBy(c => c.CompanyName).ToList(); break; } 
                                 }
                                 
@@ -111,7 +109,7 @@ namespace Classes.Customers
                             {
                                 switch (command)
                                 {
-                                    case 2: case 3: { customers.Results = customers.Results.OrderByDescending(c => c.Country).ToList(); break; }
+                                    case 2: { customers.Results = customers.Results.OrderByDescending(c => c.Country).ToList(); break; }
                                     default: { customers.Results = customers.Results.OrderByDescending(c => c.CompanyName).ToList(); break; }
                                 }
                                 break;
@@ -183,7 +181,7 @@ namespace Classes.Customers
 
             /* connection - open */
             objADONet.connectionSQLServer = objADONet.connectionOpen(objADONet.connectionSQLServer, 2);            
-            SqlCommand commandSQL = new SqlCommand("select CustomerID, CompanyName, ContactName, ContactTitle, Country from Customers LIMIT " + _settings.maxRows, objADONet.connectionSQLServer);
+            SqlCommand commandSQL = new SqlCommand("select TOP " + _settings.maxRows + " CustomerID, CompanyName, ContactName, ContactTitle, Country from Customers", objADONet.connectionSQLServer);
             SqlDataReader commandSQLReader = commandSQL.ExecuteReader();
             List<Customer> customersList = new List<Customer>();
 

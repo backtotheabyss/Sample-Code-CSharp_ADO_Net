@@ -31,11 +31,12 @@ namespace CSharp_Net8_RESTful_Query
             Console.BufferHeight = CONSOLEMAXLINES;
 
             /* dev */
-            // args = new[] { "--customersByCountry", "--maxrows:500", "--sorting:ASC", "--searchfield:Country", "--searchvalue:USA"};
-            // args = new[] { "--customersDump", "--sorting:ASC", "--maxrows:500" };
-            // args = new[] { "--customersByCountry", "--maxrows:50", "--searchfield:Country", "--searchvalue:United States", "--sorting:DESC" };
-            // args = new[] { "--customersByCompanyName", "--maxrows:1000", "--searchfield:CompanyName", "--searchvalue:Market" };
-            
+            // args = new[] { "--customersByCompanyName", "--maxrows:500", "--sorting:ASC", "--searchvalue:Market"};
+            args = new[] { "--customersDump", "--sorting:ASC", "--maxrows:50" };
+            // args = new[] { "--customersByCountry", "--maxrows:50", "--searchvalue:United States", "--sorting:DESC" };
+            // args = new[] { "--customersByCompanyName", "--maxrows:1000", "--searchvalue:Market" };
+            // args = new[] { "--customersByCompanyName" };
+
             var host = Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
@@ -58,8 +59,8 @@ namespace CSharp_Net8_RESTful_Query
             //    "Diego Sendra",
             //    "code",
             //    "C#",
-            //    "Digital_Forces",
-            //    "C#_Time_Sheet_Export",
+            //    "ALTOUR",
+            //    "C#_ADO.Net",
             //    "Logs"
             //);
 
@@ -68,6 +69,9 @@ namespace CSharp_Net8_RESTful_Query
                 "C#_ADO.Net",
                 "Logs"
             );
+
+            if (!Directory.Exists(appDataFolder))            
+                Directory.CreateDirectory(appDataFolder);            
 
             /* settings */
             var settings = host.Services.GetRequiredService<Settings>();
@@ -195,10 +199,6 @@ namespace CSharp_Net8_RESTful_Query
 
             Console.WriteLine("  sorting");
             Console.WriteLine("    --sorting:ASC or DESC\tSort criteria (default from appsettings.json)");
-            Console.WriteLine();
-
-            Console.WriteLine("  searchField");
-            Console.WriteLine("    --searchField:FieldName\tField to filter by (optional, default from appsettings.json)");
             Console.WriteLine();
 
             Console.WriteLine("  searchValue");
